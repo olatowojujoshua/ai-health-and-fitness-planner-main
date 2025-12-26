@@ -1,120 +1,185 @@
-﻿# AI Health & Fitness Planner 🏋️
+🏋️ AI Health & Fitness Planner – By Joshua
 
-A sophisticated web app that provides personalized health and fitness plans using advanced AI models. Built with Agno and powered by Gemini and Llama AI models.
+An intelligent web application that provides personalized health and fitness plans using advanced AI models.
+This upgraded version is redesigned, optimized, and enhanced by Joshua, delivering smarter plans, better UX, and improved reliability.
 
-## 🌟 Features
+🌟 Key Features
+🔹 Personalized Health Profiles
 
-- **Personalized Health Profiles**: Create and manage detailed health profiles with age, weight, height, activity level, and more
-- **AI-Powered Plans**: Generate customized dietary and fitness plans based on your profile
-- **Interactive Chat Assistant**: Get real-time advice and answers about your health and fitness journey
-- **Multiple AI Models**: Choose between Gemini 2.5 Pro and Llama 3.3 70B for plan generation
-- **Persistent Storage**: Save and load your profiles and plans across sessions
-- **Modern UI**: Beautiful, responsive interface with intuitive navigation
-- **Real-time Streaming**: Watch AI responses appear in real-time with a typing effect
+Create and manage rich user profiles including:
 
-## 🛠️ Tech Stack
+Age, weight, height, sex
 
-- **Frontend**: Streamlit
-- **AI Models**: 
-  - Google Gemini 2.5 Pro
-  - Llama 3.3 70B (via Groq)
-- **State Management**: Streamlit Session State
-- **Styling**: Custom CSS with modern design elements
+Activity level
 
-## 📋 Prerequisites
+Fitness goals
 
-- Python 3.8 or higher
-- Google API Key for Gemini
-- Groq API Key for Llama model
-- Required Python packages (see requirements.txt)
+Dietary preferences
 
-## 🚀 Installation
+Health conditions
 
-1. Clone the repository:
-```bash
-git clone https://github.com/Abdulraqib20/ai-health-and-fitness-planner.git
-cd ai-competitor-analysis
-```
+Available workout time
 
-2. Create and activate a virtual environment:
-```bash
+🤖 AI-Powered Health Plans
+
+Automatically generate:
+
+Custom Dietary Plans
+
+Personalized Fitness & Workout Plans
+
+Driven by:
+
+Google Gemini 2.5 Pro
+
+Llama 3.3 70B (via Groq)
+
+💬 Smart Chat Assistant
+
+Ask questions and receive:
+
+Real-time responses
+
+Context-aware guidance
+
+Fitness & nutrition explanations
+
+Safe and helpful recommendations
+
+🧠 Persistent Experience
+
+Save & load profiles
+
+Retain AI-generated plans
+
+Maintain chat history
+
+Smooth, optimized performance
+
+Modern & beautiful UI
+
+🛠️ Tech Stack
+Component	Technology
+Frontend	Streamlit
+AI Models	Gemini 2.5 Pro / Groq Llama 3.3 70B
+Framework	Agno AI
+State Management	Streamlit Session State + Local Persistence
+Styling	Modern Custom CSS
+📋 Prerequisites
+
+Python 3.8+
+
+Google Gemini API Key
+
+Groq API Key
+
+Project dependencies (requirements.txt)
+
+🚀 Installation
+1️⃣ Clone the Repository
+git clone https://github.com/olatowojujoshua/ai-health-and-fitness-planner.git
+cd ai-health-and-fitness-planner
+
+
+2️⃣ Create & Activate a Virtual Environment
 python -m venv venv
-source venv/bin/activate
-```
+.\venv\Scripts\activate     # Windows
+# or
+source venv/bin/activate   # Mac / Linux
 
-3. Install dependencies:
-```bash
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-```
 
-4. Set up your API keys:
-   - Create a `config` directory
-   - Add your API keys to `config/appconfig_cloud.py`:
-```python
+4️⃣ Configure API Keys
+
+Go to:
+
+config/appconfig_cloud.py
+
+
+Add your keys:
+
 GOOGLE_API_KEY = "your-gemini-api-key"
 GROQ_API_KEY = "your-groq-api-key"
-```
 
-## 💻 Usage
 
-1. Start the application:
-```bash
-streamlit run src/main2.py
-```
+(Alternatively, use .streamlit/secrets.toml depending on setup)
 
-2. Open your browser and navigate to the provided URL (typically http://localhost:8501)
+💻 Usage
 
-3. Create your health profile by filling in the required information
+Start the app:
 
-4. Generate personalized dietary and fitness plans
+streamlit run src/main.py
 
-5. Use the chat assistant to get advice and answers about your health journey
 
-## 📱 Features in Detail
+Then open your browser at:
 
-### Health Profile Creation
-- Age, weight, height, and sex
-- Activity level selection
-- Fitness goals
-- Dietary preferences
-- Health conditions
-- Available time for exercise
+http://localhost:8501
 
-### AI-Generated Plans
-- **Dietary Plan**:
-  - Personalized meal recommendations
-  - Nutritional guidelines
-  - Important considerations
-  - Hydration and electrolyte advice
+📱 Detailed Functionalities
+🧍 Health Profile Creation
 
-- **Fitness Plan**:
-  - Customized exercise routines
-  - Warm-up and cool-down exercises
-  - Progress tracking tips
-  - Form and safety guidelines
+✔️ Age, Weight, Height, Sex
+✔️ Activity Level
+✔️ Fitness Goals
+✔️ Diet Preferences
+✔️ Health Conditions
+✔️ Available Exercise Time
 
-### Chat Assistant
-- Real-time responses
-- Context-aware advice
-- Streaming response display
-- Persistent chat history
+🥗 AI-Generated Dietary Plan
 
-## 🔒 Security
+Personalized meal suggestions
 
-- API keys are stored securely in configuration files
-- User data is managed through session state
-- Persistent storage for user profiles and plans
+Nutrition guidance
 
-## 🤝 Contributing
+Key health considerations
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Hydration reminders
 
-## 🙏 Acknowledgments
+💪 AI-Generated Fitness Plan
 
-- Built with ❤️ by raqibcodes for Raqib Health
-- Powered by Google Gemini and Llama AI models
-- Styled with Streamlit and custom CSS
+Custom workout programs
 
-## 📞 Support
+Warm-up and cool-down guidance
 
-For support, please open an issue in the GitHub repository or contact abdulraqibshakir03@gmail.com
+Progress and consistency tips
+
+Safety recommendations
+
+💬 Chat Assistant
+
+Real-time interaction
+
+Streaming chatbot responses
+
+Understands plans and user context
+
+Persistent conversation memory
+
+🔒 Security
+
+✔️ Secure API key handling
+✔️ Safe user data handling
+✔️ Session-based storage
+
+🤝 Contributing
+
+Contributions are welcome!
+Feel free to fork, improve, and submit a pull request.
+
+🙏 Acknowledgment
+
+Originally inspired by collaborative development.
+Refactored, enhanced, and optimized by Joshua.
+
+Powered by:
+
+Google Gemini
+
+Llama via Groq
+
+Streamlit + Agno
+
+📞 Support
+
+For assistance or collaboration inquiries, please contact olatowoju@gmail.com
