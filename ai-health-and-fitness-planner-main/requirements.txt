@@ -4,3 +4,5 @@ groq
 google-genai
 beautifulsoup4
 tomli
+python-dotenv
+qdrant-client
