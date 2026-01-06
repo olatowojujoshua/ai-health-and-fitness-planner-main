@@ -1,3 +1,47 @@
+# config/appconfig_local.py
+import os
+import sys
+import logging
+from pathlib import Path
+from dotenv import load_dotenv
+
+project_root = Path(__file__).resolve().parent.parent
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(project_root / "config" / "logs" / "config.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+REQUIRED_VARS = ["FIRECRAWL_API_KEY", "GROQ_API_KEY", "GOOGLE_API_KEY", "EXAAI_API_KEY"]
+
+# Load .env if present (do NOT hard fail)
+env_path = project_root / ".env"
+if env_path.exists():
+    load_dotenv(env_path)
+    logger.info(f"Loaded .env from {env_path}")
+else:
+    logger.warning(f"No .env found at {env_path}. Using environment variables only.")
+
+# Read keys (missing -> empty string)
+config = {var: (os.getenv(var) or "") for var in REQUIRED_VARS}
+
+# Log which are missing (but don't exit)
+missing = [k for k, v in config.items() if not v]
+if missing:
+    logger.warning(f"Missing env vars: {', '.join(missing)}. Some features will be disabled until set.")
+
+# Export
+FIRECRAWL_API_KEY = config["FIRECRAWL_API_KEY"]
+GROQ_API_KEY = config["GROQ_API_KEY"]
+GOOGLE_API_KEY = config["GOOGLE_API_KEY"]
+EXAAI_API_KEY = config["EXAAI_API_KEY"]
+
+__all__ = REQUIRED_VARS
 import os
 import re
 import sys
