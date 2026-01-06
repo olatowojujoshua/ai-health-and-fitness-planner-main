@@ -1,43 +1,46 @@
-# DEPLOY.ps1 - One-Click GitHub Deployment
+# DEPLOY.ps1 - GitHub push helper (Windows PowerShell)
 param(
+    [Parameter(Mandatory = $true)]
     [string]$RepoName,
-    [string]$Description = "AI Health and Fitness Assistant"
+
+    [string]$Description = "AI Health and Fitness Assistant",
+
+    [switch]$Force
 )
 
-# 1. GitHub Connection
+$ErrorActionPreference = "Stop"
+
+# 1) GitHub Connection
 $GitHubUser = "olatowojujoshua"
-git remote set-url origin "https://github.com/$GitHubUser/$RepoName.git"
+$remoteUrl = "https://github.com/$GitHubUser/$RepoName.git"
 
-# 2. Commit Changes
+# Ensure git exists
+git --version | Out-Null
+
+# Ensure we are in a git repo
+if (-not (Test-Path ".git")) {
+    throw "No .git folder found. Run 'git init -b main' first (or clone the repo)."
+}
+
+# Set remote URL
+git remote set-url origin $remoteUrl
+
+# 2) Commit Changes (only if there are changes)
 git add --all
-git commit -m "🚀 Deploy: $RepoName"
+$status = git status --porcelain
+if ($status) {
+    $msg = "🚀 Deploy: $RepoName"
+    git commit -m $msg
+} else {
+    Write-Host "ℹ️ No changes to commit." -ForegroundColor Yellow
+}
 
-# 3. Force Push
-git push -u origin main --force
+# 3) Push
+if ($Force) {
+    git push -u origin main --force
+} else {
+    git push -u origin main
+}
 
-Write-Host "✅ Deployment Successful: https://github.com/$GitHubUser/$RepoName" -ForegroundColor Green
-
-
-#------------------------------------
-# Steps to Deploy
-#------------------------------------
-
-# 1. Remove git repository
-# rm -Recurse -Force .git OR Remove-Item -Recurse -Force .git
-
-# 2. initialize with Main Branch
-# git init -b main
-
-# 3. Show current branch
-# git branch --show-current  # Should output "main"
-
-# 4. Set remote URL 
-# git remote add origin https://github.com/Abdulraqib20/ai-health-and-fitness-planner
-
-# 5. Run the below in PowerShell:
-# ./deploy.ps1 -RepoName "ai-health-and-fitness-planner" -Description "A sophisticated web app that provides personalized health and fitness plans using advanced AI models. Built with Agno and powered by Gemini and Llama AI models."
-
-# Credential Caching (One-Time Setup):
-# git config --global credential.helper wincred
-
-
+Write-Host "✅ Pushed to: https://github.com/$GitHubUser/$RepoName" -ForegroundColor Green
+Write-Host "Tip: Use -Force only when you really need it." -ForegroundColor Cyan
